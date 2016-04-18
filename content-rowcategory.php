@@ -19,24 +19,45 @@ $args = array(
 $attachments = get_attached_media( '', $post->ID );
 //print_r(catch_that_image()); 
 
+$url_full = wp_get_attachment_image_src ( get_post_thumbnail_id($post->ID),'large');
+$url_full = $url_full[0];
 
-if (catch_that_image()) {
-	$url = catch_that_image();
+/*print_r("url_full : ".$url_full);
+echo "<br>";
+print_r("catch url_full : ".catch_that_image());
+echo "<br>";
+print_r("not url_full : ".!$url_full);
+echo "<br>";*/
+
+if (!$url_full && catch_that_image()) {
+	$img = catch_that_image();
+	$url = $img[0];
+	$url_full = $url;
 } else {
 	$url = wp_get_attachment_image_src ( get_post_thumbnail_id($post->ID),'large');
 	$url = $url[0];
+	$img = wp_get_attachment_image_src ( get_post_thumbnail_id($post->ID),'full');
+	$url_full = $img[0];
 }
 
 
 //$url = wp_get_attachment_image_src ( get_post_thumbnail_id($post->ID),'large')->0;
-$src = wp_get_attachment_image_src ( get_post_thumbnail_id($post->ID),'full');
-$ratio = $src[1]/$src[2];
-$width = 300 *($src[1]/$src[2]);
+//$img = wp_get_attachment_image_src ( get_post_thumbnail_id($post->ID),'full');
+$ratio = $img[1]/$img[2];
+$width = 300 *($img[1]/$img[2]);
+$width = "200px";
+$height = "200px";
 ?>
-<a style="display:block" href="<?php echo get_permalink($post->ID) ?>">
-  <div id="post-<?php echo $post->ID; ?>" class="item" style="background-size: cover;
-    background-position: center; width: <?php echo $width ?>px; height: 300px; background-repeat: no-repeat; background-image:url('<?php echo $url ?>')">
-</div>
+
+<a id="post-<?php echo $post->ID; ?>" style="display:block" href="<?php echo $url_full; ?>">
+	<img style="display: none;" src="<?php echo $url_full; ?>" alt="Bananas">
+	<div class="item" style="background-size: cover;
+																background-position: center;
+																width: <?php echo $width; ?>;
+																height: <?php echo $height; ?>;
+																background-repeat: no-repeat;
+																background-image:url('<?php echo $url ?>')">
+	</div>
 </a>
 <!-- #post-## -->
 

@@ -61,9 +61,11 @@ get_header(); ?>
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
+				<h1 class="page-title">Tout</h1>
 				<?php
-					the_archive_title( '<h1 class="page-title">', '</h1>' );
-					the_archive_description( '<div class="taxonomy-description">', '</div>' );
+					
+					//the_archive_title( '<h1 class="page-title">', '</h1>' );
+					//the_archive_description( '<div class="taxonomy-description">', '</div>' );
 				?>
 			</header><!-- .page-header -->
 			<div id="container"> 
@@ -100,6 +102,7 @@ get_header(); ?>
 	</section><!-- .content-area -->
 
 <?php get_footer(); ?>
+
 
 <script type="text/javascript">
 (function($){
@@ -145,17 +148,13 @@ get_header(); ?>
 	});
 })( jQuery );
 </script>
-
 <script>
 document.getElementById('container').onclick = function (event) {
     event = event || window.event;
     var target = event.target || event.srcElement,
-	//var target = event.target.parentNode.children[0] || event.srcElement,
-        //link = target.src ? target.parentNode : target,
-        link = target.parentNode,
-		options = {index: link, event: event},
+        link = target.src ? target.parentNode : target,
+        options = {index: link, event: event},
         links = this.getElementsByTagName('a');
     blueimp.Gallery(links, options);
 };
 </script>
-
