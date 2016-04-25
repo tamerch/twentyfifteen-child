@@ -44,20 +44,9 @@ if (!$url_full && catch_that_image()) {
 //$url = wp_get_attachment_image_src ( get_post_thumbnail_id($post->ID),'large')->0;
 //$img = wp_get_attachment_image_src ( get_post_thumbnail_id($post->ID),'full');
 $ratio = $img[1]/$img[2];
-$height = 300;
-$width = 200;
-$width = $height * $ratio;
+$width = 300 *($img[1]/$img[2]);
+$width = "200px";
+$height = "200px";
 ?>
-
-<a id="post-<?php echo $post->ID; ?>" style="display:block" href="<?php echo $url_full; ?>">
-	<img style="display: none;" src="<?php echo $url_full; ?>" alt="Bananas">
-	<div class="item" style="background-size: cover;
-																background-position: center;
-																width: <?php echo $width; ?>px;
-																height: <?php echo $height; ?>px;
-																background-repeat: no-repeat;
-																background-image:url('<?php echo $url ?>')">
-	</div>
-</a>
-<!-- #post-## -->
+<img src="<?php echo $url_full; ?>" alt="Bananas">
 

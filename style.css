@@ -16,9 +16,10 @@ Use it to make something cool, have fun, and share what you've learned with othe
 */
 
 @import url("../twentyfifteen/style.css");
-
 body {
 	/*background-color: rgba(0,0,0,0);*/
+	/*font-family: "Montserrat" !important;*/
+		
 }
 .post-navigation, .pagination, .secondary, .site-footer, .hentry, .page-header, .page-content, .comments-area, .widecolumn {
     /*background-color: rgba(0,0,0,0);*/
@@ -28,12 +29,50 @@ body {
 	display: none;
 }
 
-body, .page-title {
-		font-family: "josefin sans" !important;
+.page-title {
 		font-size: 2em;
 	}
 
-@media screen and (min-width: 38.75em) {
+.site {
+		margin: 0 auto;
+		max-width: 100%;/*mod aurekiki 1403px;*/
+		min-height: calc(100% - 75px);
+		height: calc(100% - 75px);
+		padding-top: 100px
+	}
+	
+.site-header {
+	margin: 0;
+	padding: 25px 10px !important;
+	position: fixed;
+	z-index: 999;
+	width: 100%;
+}
+.site-main {
+	padding: 0px 0 20px 0;
+	overflow: hidden; /*for sliding effect not to show scrollbar*/
+}
+.site-content {
+	display: block;
+	float: left;
+	margin: 10% 10%;
+	width: 80%;
+}
+.site-footer {
+	position: fixed;
+	bottom: 0;
+	margin: 0;
+	width: 100%;
+	/* max-height: 100px; */
+	/* float: left; */
+	margin-right: -100%;
+	max-width: 413px;
+	/* position: relative; */
+	width: 29.4118%;
+	max-height: 20%
+}	
+	
+
 	.page-header {
 		padding: 1% 1%;
 		border: none;
@@ -45,29 +84,37 @@ body, .page-title {
 		font-size: 1em;
 	}
 	
+	
+	
 	.secondary {
-		margin: 175px 0;
+		margin: 0px 0;
+		background-color: #000;
+		height: 100%;
+		width: 100%;
+		background-color: rgba(0,0,0,0.7);
+		position: fixed;
+		z-index: 1000;
 	}
 	.secondary  a{
-		font-size: 100%;
+		font-size: 18px;
 		text-transform: uppercase;
-		font-weight: 900;
+		font-weight: 300;
 		-webkit-transition: all 0.3s ease;
 		-moz-transition: all 0.3s ease;
 		-ms-transition: all 0.3s ease;
 		-o-transition: all 0.3s ease;
 		transition: all 0.3s ease;
-		opacity: 0.7 !important;
+		color: rgba(255,255,255,0.7)!important;
 	}
 	
 	.secondary a:hover, .secondary a:focus, .main-navigation .menu-item-description, .widget, .widget blockquote, .widget .wp-caption-text, .widget .gallery-caption {
-		opacity: 1 !important;
-		/*padding-left:1em;*/
+		color: rgba(255,255,255,1)!important;
 	}
 	
 	.secondary li.current-menu-item  a {
-		opacity: 1 !important;
+		/*opacity: 1 !important;*/
 		/*padding-left: 1em;*/
+		color: rgba(255,255,255,1)!important;
 	}
 	
 	.main-navigation ul, .main-navigation li, .secondary-toggle, .widget input, .widget textarea, .widget table, .widget th, .widget td, .widget pre, .widget li, .widget_categories .children, .widget_nav_menu .sub-menu, .widget_pages .children, .widget abbr[title] {
@@ -77,6 +124,10 @@ body, .page-title {
 	.main-navigation {
 		margin: 0 10% 10%;
 	}
+	
+	.main-navigation a {
+		padding: 0 0 1em 0;
+	}
 
 	/*min-width 59.6875em*/
 	body:before {
@@ -85,36 +136,61 @@ body, .page-title {
 		min-height: 75px;*/
 	}
 
-	.site {
-		margin: 0 auto;
-		max-width: 100%;/*mod aurekiki 1403px;*/
-		min-height: calc(100% - 75px);
-		height: calc(100% - 75px);
-	}
-	.site-main {
-		padding: 75px 0 0 0;
-		overflow: hidden; /*for sliding effect not to show scrollbar*/
-	}
-	.site-content {
-		display: block;
-		float: left;
-		margin-left: 20%;
-		width: 80%;
-	}
-	.site-footer {
-		position: fixed;
-		bottom: 0;
+	#secondary-nav-footer {
 		margin: 0;
-		width: 100%; /*175px;*/
-		max-height: 100px;
+	}
+	div#secondary-nav-footer{
+		margin: 0;
+	}
+
+	div#secondary-nav-footer > nav#social-navigation {
+		margin: 0 20%;
 	}
 	
+	
+	#container {
+		width: 100%;
+	}
+	
+	#container a {
+		-webkit-transition: all 0.3s ease !important;;
+		-moz-transition: all 0.3s ease !important;;
+		-ms-transition: all 0.3s ease !important;
+		-o-transition: all 0.3s ease !important;
+		transition: all 0.3s ease !important;
+	}
+	
+	#container:hover > a {
+		opacity: 0.5 !important;
+	}
+
+	#container:hover > a:hover {
+		opacity: 1 !important;
+	}
 	/**/
+	#colophon{display: none;}
 	
-	
+@media screen and (min-width: 38.75em) {
 	
 }
 
 @media screen and (min-width: 59.6875em) {
+	
+	.sidebar {
+		width: 350px;
+	}
+	.secondary {
+		height: auto;
+		width: auto;
+		position: relative;
+	}
+	.site-content {
+		margin-left: 350px;
+		margin-top: 0%;
+		margin-left: 400px;
+		width: calc( 99% - 400px );
+	}
+	#colophon{display: block;}
+	
 	
 }

@@ -30,15 +30,37 @@
  *
  * @since Twenty Fifteen 1.0
  */
+
+
+	// SPECIFIC REGISTER FOR BOTTOM WIDGET GTRANS IN FOOTER
+    register_sidebar( array(
+		'name'          => __( 'Footer Widget', 'twentyfifteen-child' ),
+		'id'            => 'footer-sidebar-1',
+		'description'   => '',
+		'class'         => 'footer',
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '<h2 class="widgettitle">',
+		'after_title'   => '</h2>',
+	) );
+	
 function twentyfifteenchild_scripts() {
 	wp_enqueue_script( 'freewall', get_stylesheet_directory_uri() . '/js/freewall/freewall.js', array(), '20141010', true );
 	wp_enqueue_script( 'blueimp', get_stylesheet_directory_uri() . '/js/blueimp/blueimp-gallery.js', array(), '20141010', true );
 	wp_enqueue_script( 'blueimp-indicator', get_stylesheet_directory_uri() . '/js/blueimp/blueimp-gallery-indicator.js', array(), '20141010', true );
+	wp_enqueue_script( 'collage-plus', get_stylesheet_directory_uri() . '/js/jquery.collagePlus.js', array(), '20141010', true );
 	
 	wp_enqueue_style( 'style-blueimp', get_stylesheet_directory_uri() . '/css/blueimp/blueimp-gallery.css' );
 	wp_enqueue_style( 'style-blueimp-indicator', get_stylesheet_directory_uri() . '/css/blueimp/blueimp-gallery-indicator.css' );
-	}
-add_action( 'wp_enqueue_scripts', 'twentyfifteenchild_scripts' );
+	
+    wp_enqueue_script('twentyfifteenchild-script', get_stylesheet_directory_uri().'/js/functions.js', array('jquery'));
+	wp_localize_script( 'twentyfifteenchild-script', 'screenReaderText', array(
+		'expand'   => '<span class="screen-reader-text">' . __( 'expand child menu', 'twentyfifteen' ) . '</span>',
+		'collapse' => '<span class="screen-reader-text">' . __( 'collapse child menu', 'twentyfifteen' ) . '</span>',
+	) );
+	
+}
+add_action( 'wp_enqueue_scripts', 'twentyfifteenchild_scripts');
 
 add_filter( 'get_the_archive_title', function ( $title ) {
     if( is_category() ) {
@@ -67,3 +89,8 @@ function catch_that_image() {
   $out = array(0 => $first_img , 1 => $size[0] , 2 => $size[1] );
   return $out;
 }
+
+function register_my_menu() {
+  register_nav_menu('header-menu',__( 'Header Menu' ));
+}
+add_action( 'init', 'register_my_menu' );

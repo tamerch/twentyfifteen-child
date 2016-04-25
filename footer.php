@@ -13,6 +13,26 @@
 	</div><!-- .site-content -->
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
+		<?php if ( is_active_sidebar( 'footer-sidebar-1' ) ) : ?>
+			<div id="widget-area" class="widget-area" role="complementary">
+				<?php dynamic_sidebar( 'footer-sidebar-1' ); ?>
+			</div><!-- .widget-area -->
+		<?php endif; ?>
+		<div id="secondary-nav-footer" class="secondary footer">
+		<?php if ( has_nav_menu( 'social' ) ) : ?>
+			<nav id="social-navigation" class="social-navigation" role="navigation">
+				<?php
+					// Social links navigation menu.
+					wp_nav_menu( array(
+						'theme_location' => 'social',
+						'depth'          => 1,
+						'link_before'    => '<span class="screen-reader-text">',
+						'link_after'     => '</span>',
+					) );
+				?>
+			</nav><!-- .social-navigation -->
+		<?php endif; ?>
+		</div>
 		<div class="site-info">
 			<?php
 				/**
@@ -22,7 +42,6 @@
 				 */
 				do_action( 'twentyfifteen_credits' );
 			?>
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'twentyfifteen' ) ); ?>"><?php printf( __( 'Proudly powered by %s', 'twentyfifteen' ), 'WordPress' ); ?></a>
 		</div><!-- .site-info -->
 	</footer><!-- .site-footer -->
 
